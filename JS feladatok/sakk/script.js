@@ -14,7 +14,7 @@ function renderChesstable(n, selector){
     const parElement = document.querySelector(selector);
     // a táblázat alapja egy div - ha táblázatelem lenne, akkor tbody lenne
     const table = document.createElement("div");
-    table.className = "table"
+    table.className = "table";
 
     //létrehozzuk a sorokat - ha táblázat lenne, akkor tr lenne
     for (let rowIndex=0; rowIndex<n; rowIndex++){
