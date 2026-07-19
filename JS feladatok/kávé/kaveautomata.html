@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavemachine</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: rgb(226, 236, 188);
+            font-size: larger;
+        }
+
+        #container{
+            display: grid;
+            grid-template-columns: repeat(12,1fr);
+            grid-template-rows: repeat(6, 150px);
+        }
+
+        h1{
+            color: rgb(48, 6, 6);
+            margin: 0;
+            grid-column: 6/9;
+            grid-row: 7;
+            padding-bottom: 100px;
+        }
+
+        /*Kavemachine Start*/
+        #kavem{
+            height: 800px;
+            width: 500px;
+            border: 3px solid black;
+            grid-column: 1/6;
+            grid-row: 1/5;
+            margin-top: 50px;
+            margin-left: 50px;
+            display: grid;
+            grid-template-columns: repeat(12,1fr);
+            grid-template-rows: repeat(6, 100px);
+            background-color: rgb(48, 44, 44);
+        }
+
+        #screen-1{
+            height: 30px;
+            width: 100px;
+            grid-column: 5/7;
+            grid-row: 1;
+            margin: 0 auto;
+        }
+
+        #screen-2{
+            grid-row: 2;
+            grid-column: 1/13;
+            height: 30px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        .screen{
+            text-align: center;
+            color: rgb(106, 151, 61);
+            background-color: rgba(78, 133, 182, 0.1);
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        #espresso{
+            grid-column: 1/4;
+            grid-row: 3/4;
+            margin-left: 50px;
+        }
+        #lungo{
+            grid-column: 7/12;
+            grid-row: 3/4;
+            margin-left: 50px;
+        }
+        #macchiato{
+            grid-column: 1/4;
+            grid-row: 4/5;
+            margin-left: 50px;
+        }
+        #americano{
+            grid-column: 7/12;
+            grid-row: 4/5;
+            margin-left: 50px;
+        }
+
+        #refundable{
+            grid-column: 5/7;
+            grid-row: 7/8;
+            height: 100px;
+            width: 200px;
+            border: 1px solid black;
+            border-radius: 50%;
+            background-color: black;
+            color: wheat;
+            text-align: center;
+        }
+
+        #refund{
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            border-radius: 70%;
+            text-align: center;
+            text-decoration: underline;
+            background-color: lightgray;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .coffee{
+            background-color: rgba(145, 140, 140, 0.685);
+            height: 30px;
+            width: 80px;
+            text-align: center;
+            border: 1px solid white;
+        }
+
+         /*Kavemachine End*/
+        #purchase{
+            height: 300px;
+            width: 500px;
+            border: 2px solid black;
+            grid-column: 8/10;
+            grid-row: 3 / 5;
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            grid-template-rows: repeat(6, 60px);
+            background-color: rgb(193, 193, 212);
+        }
+
+        .coin{
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            border-radius: 70%;
+            text-align: center;
+            text-decoration: underline;
+            background-color: lightgray;
+        }
+
+        #coin-20{
+            grid-column: 1/2;
+            grid-row: 5/6;
+            margin-left: 10px;
+        }
+        #coin-5{
+            grid-column: 2/3;
+            grid-row: 4/5;
+        }
+        #coin-100{
+            grid-column: 1/2;
+            grid-row: 3/4;
+        }
+        #coin-50{
+            grid-column: 3/4;
+            grid-row: 5/6;
+        }
+        #coin-10{
+            grid-column: 4/5;
+            grid-row: 4/5;
+        }
+        #coin-100-2{
+            grid-column: 4/5;
+            grid-row: 5/6;
+        }
+        #coin-200{
+            grid-column: 5/6;
+            grid-row: 3/4;
+        }
+
+        #coin-10-2{
+            grid-column: 6/7;
+            grid-row: 5/6;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Coffee machine</h1>
+        <div id="kavem">
+            <div  id="screen-1" class="screen">0Ft</div>
+            <div id="screen-2" class="screen">Kérem dobjon be egy érmét!</div>
+            <button type="button" id="espresso" class="coffee" data-price="200">Espresso 200Ft</button>
+            <button type="button" id="lungo" class="coffee" data-price="350">Lungo <br>350Ft</button>
+            <button type="button" id="macchiato" class="coffee" data-price="350">Macchiato 350Ft</button>
+            <button type="button" id="americano" class="coffee" data-price="250">Americano 250Ft</button>
+            <div id="refundable"> Visszajáró
+                <div id="refund"></div>
+            </div>
+        </div>
+        <div id="purchase">
+            <button type="button" id="coin-20" class="coin" data-value="20">20Ft</button>
+            <button type="button" id="coin-5" class="coin" data-value="5">5Ft</button>
+            <button type="button" id="coin-100" class="coin" data-value="100">100Ft</button>
+            <button type="button" id="coin-50" class="coin" data-value="50">50Ft</button>
+            <button type="button" id="coin-10" class="coin" data-value="10">10Ft</button>
+            <button type="button" id="coin-100-2" class="coin" data-value="100">100Ft</button>
+            <button type="button" id="coin-10-2" class="coin" data-value="10">10Ft</button>
+            <button type="button" id="coin-200" class="coin" data-value="200">200Ft</button>
+
+        </div>
+    </div>
+    <script src="kaveautomata.js"></script>
+</body>
+</html>
