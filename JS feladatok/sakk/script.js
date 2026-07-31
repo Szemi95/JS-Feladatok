@@ -14,7 +14,7 @@ function renderChesstable(n, selector){
     const parElement = document.querySelector(selector);
     // a táblázat alapja egy div - ha táblázatelem lenne, akkor tbody lenne
     const table = document.createElement("div");
-    table.className = "table";
+    table.className = "table"
 
     //létrehozzuk a sorokat - ha táblázat lenne, akkor tr lenne
     for (let rowIndex=0; rowIndex<n; rowIndex++){
@@ -38,6 +38,26 @@ function renderChesstable(n, selector){
         // amikor a sor teljesen elkészült akkor csatolom hozzá a table-hez
         table.appendChild(rowElement);
     }
+    {
+        const rowElement = document.createElement("div");
+        rowElement.className = "row";
+
+        const spaceElement = document.createElement("div");
+        spaceElement.className = "space";
+
+        rowElement.appendChild(spaceElement);
+        for(let colIndex = 0; colIndex<n; colIndex++){
+            const charElement = document.createElement("div");
+            charElement.className = "char";
+
+            const charCodeA = "a".charCodeAt(0);
+            charElement.textContent = String.fromCharCode(charCodeA + colIndex);
+            rowElement.appendChild(charElement);
+        }
+
+
+        table.appendChild(rowElement);
+    }
 
     //hozzáadom a divet a szülőelemhez
     parElement.appendChild(table);
@@ -47,4 +67,5 @@ function renderChesstable(n, selector){
 renderChesstable(8, "#content")
 
 
-// majd még a betűket alulra meg kell csinálni, de arra már nem maradt ma kraft :D
+
+
